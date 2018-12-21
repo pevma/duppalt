@@ -48,7 +48,7 @@ EOF
 }
 
 # set up Ubuntu releases
-ubuntu_releases=(devel rolling xenial trusty)
+ubuntu_releases=(latest devel rolling xenial trusty)
 
 ppa="ppatest"
 #default is the test repo unless otherwise specified
@@ -77,7 +77,7 @@ do
              ;;
          u)
              single_ubuntu=$OPTARG
-             if [[ "$single_ubuntu" =~ ^(rolling|trusty|devel|xenial)$ ]];
+             if [[ "$single_ubuntu" =~ ^(latest|rolling|trusty|devel|xenial)$ ]];
              then
                echo -e "\n Using single Ubuntu release set to ${single_ubuntu} \n"
                ubuntu_releases=("${single_ubuntu}")

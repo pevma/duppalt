@@ -208,6 +208,34 @@ do
   
   echo -e "\nBegin test sequence  sqard-${container}\n" \
   &>> ${log_file}
+
+  echo -e "\nsqard command: suricata-update -h \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update -h' \
+  &>> ${log_file}
+  
+  echo -e "\nsqard command: suricata-update update-sources \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update update-sources' \
+  &>> ${log_file}
+  
+  echo -e "\nsqard command: suricata-update enable-source oisf/trafficid \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update enable-source oisf/trafficid' \
+  &>> ${log_file}
+
+  echo -e "\nsqard command: suricata-update enable-source ptresearch/attackdetection \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update enable-source ptresearch/attackdetection' \
+  &>> ${log_file}
+  
+  echo -e "\nsqard command: suricata-update list-sources \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update list-sources' \
+  &>> ${log_file}
+  
+  echo -e "\nsqard command: suricata-update list-enabled-sources \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update list-enabled-sources' \
+  &>> ${log_file}
+
+  echo -e "\nsqard command: suricata-update \n" >> ${log_file}
+  docker exec sqard-${container} sh -c 'suricata-update' \
+  &>> ${log_file}
   
   echo -e "\nsqard command: wget -O /var/cache/testmyids.txt www.testmyids.com/ \n" >> ${log_file}
   docker exec sqard-${container} wget -O /var/cache/testmyids.txt www.testmyids.com/ \
@@ -267,34 +295,6 @@ do
   
   echo -e "\nsqard command: suricatactl filestore prune -h \n" >> ${log_file}
   docker exec sqard-${container} sh -c 'suricatactl filestore prune -h' \
-  &>> ${log_file}
-
-  echo -e "\nsqard command: suricata-update -h \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update -h' \
-  &>> ${log_file}
-  
-  echo -e "\nsqard command: suricata-update update-sources \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update update-sources' \
-  &>> ${log_file}
-  
-  echo -e "\nsqard command: suricata-update enable-source oisf/trafficid \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update enable-source oisf/trafficid' \
-  &>> ${log_file}
-
-  echo -e "\nsqard command: suricata-update enable-source ptresearch/attackdetection \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update enable-source ptresearch/attackdetection' \
-  &>> ${log_file}
-  
-  echo -e "\nsqard command: suricata-update list-sources \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update list-sources' \
-  &>> ${log_file}
-  
-  echo -e "\nsqard command: suricata-update list-enabled-sources \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update list-enabled-sources' \
-  &>> ${log_file}
-
-  echo -e "\nsqard command: suricata-update \n" >> ${log_file}
-  docker exec sqard-${container} sh -c 'suricata-update' \
   &>> ${log_file}
   
   echo -e "\nsqard command: suricatasc -c \"reload-rules\" \n" >> ${log_file}
